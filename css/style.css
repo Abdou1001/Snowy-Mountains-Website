@@ -12,6 +12,7 @@
 
 html{
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body{
@@ -70,6 +71,7 @@ a{
     align-items: center;
     transition: opacity 0.5s ease;
 }
+
 #loader-wrapper .snowflake{
     font-size: 50px;
     color: white;
@@ -92,6 +94,12 @@ a{
     background-color: #fff;
     border-radius: 50%;
     z-index: 99;
+}
+
+@media (max-width: 992px){
+    .cursor{
+        display: none;
+    }
 }
 /* End Cursor Point */
 
@@ -520,7 +528,13 @@ header nav .media li:hover a{
 
     .event .content>div .left,
     .event .content>div .right{
-        height: 50%;
+        height: 100%;
+    }
+    .event .content>div .text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
 /* End Events Section */
@@ -579,6 +593,9 @@ header nav .media li:hover a{
 }
 
 @media (max-width: 768px){
+    .gallery {
+        margin-top: 170px;
+    }
     .gallery .content .box {
         width: 150px;
         height: 150px;
