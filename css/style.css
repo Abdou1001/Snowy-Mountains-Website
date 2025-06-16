@@ -18,6 +18,7 @@ body{
     overflow-x: hidden;
     font-family: "Poppins";
     background-color: #f0f4f8;
+    position: relative;
 }
 
 a{
@@ -54,6 +55,26 @@ a{
     }
 }
 /* End Container */
+
+/* Start loader wrapper */
+#loader-wrapper{
+    width: 100%;
+    height: 100dvb;
+    background-color: var(--main-color);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+#loader-wrapper .snowflake{
+    font-size: 50px;
+    color: white;
+}
+/* End loader wrapper */
 
 /* Start Cursor Point */
 .cursor{
@@ -201,12 +222,12 @@ header nav .navBar ul li::before{
     transition: .3s;
     content: attr(data-text);
     position: absolute;
-    left: 0;
+    left: 0px;
     top: 100%;
     color: var(--main-color);
 }
 
-header nav .navBar ul:hover li a{
+header nav .navBar ul:hover a{
     color: rgba(255, 255, 255, 0.16);
     transition: .3s;
 }

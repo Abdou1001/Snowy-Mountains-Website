@@ -1,29 +1,52 @@
 // use Gsap library
 gsap.registerPlugin(ScrollTrigger);
 
+// loader wrapper
+// make the animation
+gsap.to(".snowflake", {
+	rotation: 360,
+	duration: 3,
+	delay: 3,
+	repeat: -1
+});
+
+// after loaded the page hide the loader  
+window.addEventListener("load", () => {
+	const loader = document.getElementById("loader-wrapper");
+
+	loader.style.opacity = 0;
+
+	setTimeout(() => {
+		loader.style.display = "none";
+	}, 500);
+});
+
 // cursor point
 
+let clientX = 0;
+let clientY = 0;
+
 document.body.addEventListener("mousemove", (e) => {
-	clientX = e.pageX;
-	clientY = e.pageY;
+	clientX = e.clientX;
+	clientY = e.clientY;
+});
+
+// Continuous updating even while scrolling
+function updateCursor() {
+	const scrollY = window.scrollY;
+	const scrollX = window.scrollX;
 
 	gsap.to(".cursor .circle", {
-		x: clientX,
-		y: clientY,
+		x: clientX + scrollX,
+		y: clientY + scrollY,
 		duration: 0.2,
 		ease: "power2.out",
 	});
-});
 
-// When scrolling, move the item to the stored location.
-document.body.addEventListener("scroll", () => {
-	gsap.to(".cursor .circle", {
-		x: clientX,
-		y: clientY,
-		duration: 0.2,
-		ease: "power2.out",
-	});
-});
+	requestAnimationFrame(updateCursor);
+}
+
+updateCursor();
 
 // nav bar
 const manuIcon = document.getElementById("manu-icon");
