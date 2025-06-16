@@ -598,7 +598,7 @@ header nav .media li:hover a{
 }
 
 .reservations .content{
-    background-image: url("/img/reservations.jpg");
+    background-image: url("../img/reservations.jpg");
     height: 90dvb;
     background-size: cover;
     background-attachment: fixed;
